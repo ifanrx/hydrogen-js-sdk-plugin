@@ -1,4 +1,4 @@
-const API_HOST = 'https://xiaoapp.io'
+const API_HOST = 'https://api.xiaoapp.io'
 
 const API = {
   LOGIN: '/hserve/v1.4/session/init/',

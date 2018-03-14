@@ -1,7 +1,6 @@
 const BaaS = require('./baas')
 const constants = require('./constants')
 const HError = require('./HError')
-const Promise = require('./promise')
 const request = require('./request')
 const storage = require('./storage')
 const utils = require('./utils')
@@ -18,7 +17,7 @@ let silentLoginReject = []
 // 获取登录凭证 code, 进而换取用户登录态信息
 const auth = () => {
   return new Promise((resolve, reject) => {
-    wx.login({
+    BaaS.wxLogin({
       success: res => {
         return sessionInit(res.code, resolve, reject)
       },
@@ -175,7 +174,7 @@ const logout = () => {
 
 const getUserInfo = () => {
   return new Promise((resolve, reject) => {
-    wx.getUserInfo({
+    BaaS.wxGetUserInfo({
       success: (res) => {
         let payload = {
           rawData: res.rawData,

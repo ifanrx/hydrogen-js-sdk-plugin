@@ -2,7 +2,7 @@ const GeoPoint = require('./GeoPoint')
 const GeoPolygon = require('./GeoPolygon')
 const HError = require('./HError')
 const utils = require('./utils')
-const _isString = require('lodash/isString')
+const _isString = require('../utils').isString
 
 class Query {
   constructor() {

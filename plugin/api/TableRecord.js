@@ -1,6 +1,6 @@
 const BaaS = require('./baas')
 const BaseRecord = require('./BaseRecord')
-const _cloneDeep = require('lodash.clonedeep')
+const _cloneDeep = require('../utils').cloneDeep
 
 class TableRecord  extends BaseRecord {
   constructor(tableID, recordID) {

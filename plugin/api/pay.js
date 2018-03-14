@@ -2,7 +2,6 @@ const BaaS = require('./baas')
 const baasRequest = require('./baasRequest').baasRequest
 const constants = require('./constants')
 const HError = require('./HError')
-const Promise = require('./promise')
 const storage = require('./storage')
 
 const API = BaaS._config.API
@@ -36,7 +35,7 @@ const pay = (params) => {
   }).then(function (res) {
     let data = res.data || {}
     return new Promise((resolve, reject) => {
-      wx.requestPayment({
+      BaaS.wxPaymentRequest({
         appId: data.appId,
         timeStamp: data.timeStamp,
         nonceStr: data.nonceStr,

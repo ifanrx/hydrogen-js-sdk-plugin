@@ -6,7 +6,7 @@ const constants = require('./constants')
 const HError = require('./HError')
 const storage = require('./storage')
 const utils = require('./utils')
-const _isString = require('lodash/isString')
+const _isString = require('../utils').isString
 
 const BaaS = global.BaaS || {}
 
@@ -18,7 +18,6 @@ BaaS.init = (clientID) => {
   }
 
   BaaS._config.CLIENT_ID = clientID
-  BaaS._config.API_HOST = `https://${clientID}.xiaoapp.io`
 }
 
 BaaS.getAuthToken = () => {
@@ -39,6 +38,12 @@ BaaS.clearSession = () => {
   storage.set(constants.STORAGE_KEY.UID, '')
   storage.set(constants.STORAGE_KEY.OPENID, '')
   storage.set(constants.STORAGE_KEY.UNIONID, '')
+}
+
+BaaS.extendFunc = (wxLogin, wxGetUserInfo, wxPaymentRequest) => {
+  BaaS.wxLogin = wxLogin
+  BaaS.wxGetUserInfo = wxGetUserInfo
+  BaaS.wxPaymentRequest = wxPaymentRequest
 }
 
 module.exports = BaaS

@@ -1,5 +1,5 @@
 'use strict'
-const extend = require('node.extend')
+const extend = require('../utils').extend
 const HError = require('./HError')
 
 let config

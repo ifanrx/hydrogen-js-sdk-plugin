@@ -1,5 +1,5 @@
-const extend = require('node.extend')
 const config = require('./config')
+const extend = require('../utils').extend
 
 let devConfig = {
   DEBUG: true,

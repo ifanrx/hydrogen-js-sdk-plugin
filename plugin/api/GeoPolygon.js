@@ -1,6 +1,6 @@
 const GeoPoint = require('./GeoPoint')
 const HError = require('./HError')
-const _cloneDeep = require('lodash.clonedeep')
+const _cloneDeep = require('../utils').cloneDeep
 
 class GeoPolygon {
   constructor(args) {

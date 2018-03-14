@@ -1,1 +1,6 @@
-<view>hydrogen-js-sdk-plugin</view>
+<view>
+  <button bindtap='login'>login</button>
+  <button bindtap='pay'>pay</button>
+  <button bindtap='getRecord'>getRecord</button>
+  <button bindtap='uploadFile'>uploadFile</button>
+</view>

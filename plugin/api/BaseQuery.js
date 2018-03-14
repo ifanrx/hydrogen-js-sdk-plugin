@@ -1,7 +1,7 @@
 const HError = require('./HError')
 const Query = require('./Query')
-const _cloneDeep = require('lodash.clonedeep')
-const _isInteger = require('lodash/isInteger')
+const _cloneDeep = require('../utils').cloneDeep
+const _isInteger = require('../utils').isInteger
 
 class BaseQuery {
   constructor() {

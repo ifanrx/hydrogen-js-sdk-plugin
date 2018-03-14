@@ -1,7 +1,7 @@
 const BaaS = require('./baas')
 const baasRequest = require('./baasRequest').baasRequest
 const HError = require('./HError')
-const _isString = require('lodash/isString')
+const _isString = require('../utils').isString
 
 const API = BaaS._config.API
 

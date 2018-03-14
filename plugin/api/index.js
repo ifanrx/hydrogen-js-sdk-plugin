@@ -13,7 +13,6 @@ BaaS.login = require('./auth').login
 BaaS.logout = require('./auth').logout
 BaaS.order = require('./order')
 BaaS.pay = require('./pay')
-BaaS.Promise = require('./promise')
 BaaS.Query = require('./Query')
 BaaS.request = require('./request')
 BaaS.storage = require('./storage')

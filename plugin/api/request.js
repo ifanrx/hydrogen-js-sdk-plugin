@@ -1,8 +1,7 @@
 const BaaS = require('./baas')
 const constants = require('./constants')
-const extend = require('node.extend')
+const extend = require('../utils').extend
 const HError = require('./HError')
-const Promise = require('./promise')
 const utils = require('./utils')
 
 

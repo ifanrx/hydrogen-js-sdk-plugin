@@ -1,4 +1,4 @@
-const _cloneDeep = require('lodash.clonedeep')
+const _cloneDeep = require('../utils').cloneDeep
 
 class GeoPoint {
   constructor(longitude, latitude) {
