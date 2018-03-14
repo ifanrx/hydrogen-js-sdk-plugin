@@ -1,6 +1,3 @@
-var data = require('./api/data.js')
+var BaaS = require('./api/data.js')
 
-module.exports = {
-  getData: data.getData,
-  setData: data.setData
-}
+module.exports = BaaS

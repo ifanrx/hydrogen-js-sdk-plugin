@@ -1,6 +1,6 @@
-var plugin = requirePlugin("myPlugin")
+var BaaS = requirePlugin("myPlugin")
 Page({
   onLoad: function() {
-    plugin.getData()
+    BaaS.getData()
   }
 })
