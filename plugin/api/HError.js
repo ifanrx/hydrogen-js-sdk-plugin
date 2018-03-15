@@ -27,6 +27,8 @@ class HError {
       return 'payment cancelled'
     case 608:
       return 'payment failed'   // error message 会被重写为微信返回的错误信息
+    case 609:
+      return 'you need to execute wxExtend'
     default:
       return 'unknown error'
     }

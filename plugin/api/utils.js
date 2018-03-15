@@ -135,6 +135,16 @@ const isArray = value => {
   return Object.prototype.toString.call(value) === '[object Array]'
 }
 
+const isObject = value => {
+  const type = typeof value
+  return value != null && (type == 'object')
+}
+
+const isFunction = value => {
+  const type = typeof value
+  return value != null && (type == 'function')
+}
+
 const extend = (dist, src) => {
   return Object.assign(dist, src)
 }
@@ -169,6 +179,8 @@ module.exports = {
   wxRequestFail,
   extractErrorMsg,
   isString,
+  isObject,
+  isFunction,
   extend,
   cloneDeep,
 }

@@ -17,6 +17,10 @@ let silentLoginReject = []
 // 获取登录凭证 code, 进而换取用户登录态信息
 const auth = () => {
   return new Promise((resolve, reject) => {
+    if (!BaaS.wxLogin) {
+      throw new HError(609)
+    }
+
     BaaS.wxLogin({
       success: res => {
         return sessionInit(res.code, resolve, reject)
@@ -174,6 +178,10 @@ const logout = () => {
 
 const getUserInfo = () => {
   return new Promise((resolve, reject) => {
+    if (!BaaS.wxGetUserInfo) {
+      throw new HError(609)
+    }
+
     BaaS.wxGetUserInfo({
       success: (res) => {
         let payload = {

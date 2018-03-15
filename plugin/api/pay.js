@@ -35,6 +35,10 @@ const pay = (params) => {
   }).then(function (res) {
     let data = res.data || {}
     return new Promise((resolve, reject) => {
+      if (!BaaS.wxPaymentRequest) {
+        throw new HError(609)
+      }
+
       BaaS.wxPaymentRequest({
         appId: data.appId,
         timeStamp: data.timeStamp,

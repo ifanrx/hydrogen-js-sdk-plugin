@@ -49,6 +49,7 @@ Page({
   },
 
   pay: function() {
+    let _this = this
     wx.getSetting({
       success(res) {
         if (res.authSetting['scope.userInfo']) {
@@ -58,10 +59,10 @@ Page({
           }
           wx.BaaS.pay(params).then(res => {
             console.log(res)
-            this.showSuccessToast()
+            _this.showSuccessToast()
           }, err => {
             console.log(err)
-            this.showFailToast()
+            _this.showFailToast()
           })
         } else {
           wx.BaaS.login()
