@@ -28,7 +28,7 @@ class BaseQuery {
   }
 
   offset(value) {
-    if (!_isInteger(value)) {
+    if (!Number.isInteger(value)) {
       throw new HError(605)
     }
     this._offset = value

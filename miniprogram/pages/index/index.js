@@ -26,10 +26,10 @@ Page({
 
   login: function() {
     wx.BaaS.login().then((res) => {
-      console.log('res', res)
       this.setData({
         userInfo: wx.BaaS.storage.get('userinfo')
       })
+      console.log('res', res)
       this.showSuccessToast()
     }).catch(err => {
       console.log(err)
@@ -58,7 +58,7 @@ Page({
             merchandiseDescription: '深蓝色秋裤'
           }
           wx.BaaS.pay(params).then(res => {
-            console.log(res)
+            console.log('res', res)
             _this.showSuccessToast()
           }, err => {
             console.log(err)
@@ -90,7 +90,7 @@ Page({
     let query = new wx.BaaS.Query()
     query.compare('created_by', '=', 100)
     Product.setQuery(query).find().then(res => {
-      console.log(res.data)
+      console.log('res', res.data)
       this.showSuccessToast()
     }, err => {
       console.log(err)
@@ -101,8 +101,10 @@ Page({
   updateRecord: function() {
     Product.getWithoutData('5aa8f35b09a8050ae1bbce03').set({created_by: 100}).update().then(res => {
       console.log('res', res.data)
+      this.showSuccessToast()
     }, err => {
       console.log('err', err)
+      this.showFailToast()
     })
   },
 
@@ -114,49 +116,45 @@ Page({
       this.showSuccessToast()
     }, err => {
       console.log(err)
-      howFailToast()
+      this.showFailToast()
     })
   },
 
   getContent: function() {
     MyContentGroup.getContent(1521091701839706).then(res => {
-      this.showSuccessToast()
-      console.log(res)
-    }, err => {
-      console.log(err)
-      showFailToast()
-    })
-  },
-
-  getUser: function() {
-    MyUser.get(61718290).then(res => {
-      console.log(res)
+      console.log('res', res)
       this.showSuccessToast()
     }, err => {
       console.log(err)
       this.showFailToast()
     })
-    // MyUser.find().then(res => {
-    //   console.log('res', res)
-    //   this.showSuccessToast()
-    // }, err => {
-    //   console.log(err)
-    //   this.showFailToast()
-    // })
+  },
+
+  getUser: function() {
+    MyUser.get(61718290).then(res => {
+      console.log('res', res)
+      this.showSuccessToast()
+    }, err => {
+      console.log(err)
+      this.showFailToast()
+    })
   },
 
   uploadFile: function() {
+    let _this = this
     wx.chooseImage({
       success: function (res) {
         let MyFile = new wx.BaaS.File()
-        let fileParams = { filePath: res.tempFilePaths[0] }
-        let metaData = { categoryName: 'SDK' }
+        let fileParams = {filePath: res.tempFilePaths[0]}
+        let metaData = {categoryName: 'SDK'}
 
         MyFile.upload(fileParams, metaData).then(res => {
           let data = res.data
-          console.log(data)
+          console.log('res', data)
+          _this.showSuccessToast()
         }, err => {
-
+          console.log(err)
+          _this.showFailToast()
         })
       }
     })
