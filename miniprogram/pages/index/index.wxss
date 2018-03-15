@@ -1,0 +1,20 @@
+.user-info {
+  display: flex;
+  flex-direction: row;
+}
+
+.user-info-name {
+  flex: 1;
+}
+
+.user-info-avatar {
+  width: 120px;
+  height: 100px;
+  text-align: center;
+}
+
+.user-info-avatar image {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+}
