@@ -6,14 +6,13 @@ const constants = require('./constants')
 const HError = require('./HError')
 const storage = require('./storage')
 const utils = require('./utils')
-const _isString = require('../utils').isString
 
 const BaaS = global.BaaS || {}
 
 BaaS._config = utils.getConfig()
 
 BaaS.init = (clientID) => {
-  if (!_isString(clientID)) {
+  if (!utils.isString(clientID)) {
     throw new HError(605)
   }
 

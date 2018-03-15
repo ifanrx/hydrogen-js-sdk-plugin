@@ -1,7 +1,6 @@
 const HError = require('./HError')
 const Query = require('./Query')
-const _cloneDeep = require('../utils').cloneDeep
-const _isInteger = require('../utils').isInteger
+const utils = require('./utils')
 
 class BaseQuery {
   constructor() {
@@ -13,7 +12,7 @@ class BaseQuery {
 
   setQuery(queryObject) {
     if (queryObject instanceof Query) {
-      this._queryObject = _cloneDeep(queryObject.queryObject)
+      this._queryObject = utils.cloneDeep(queryObject.queryObject)
     } else {
       throw new HError(605)
     }
@@ -21,7 +20,7 @@ class BaseQuery {
   }
 
   limit(value) {
-    if (!_isInteger(value)) {
+    if (!Number.isInteger(value)) {
       throw new HError(605)
     }
     this._limit = value

@@ -1,6 +1,6 @@
 Page({
   login: function() {
-    wx.BaaS.pLogin(wx.login, wx.getUserInfo)
+    wx.BaaS.login(wx.login, wx.getUserInfo)
   },
 
   pay: function() {
@@ -11,7 +11,7 @@ Page({
             totalCost: 0.1,
             merchandiseDescription: '深蓝色秋裤'
           }
-          wx.BaaS.pay(wx.requestPayment, params).then(res => {
+          wx.BaaS.pay(params).then(res => {
             console.log(res)
           }, err => {
             console.log(err)

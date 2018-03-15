@@ -1,7 +1,6 @@
 const auth = require('./auth')
 const BaaS = require('./baas')
 const constants = require('./constants')
-const extend = require('../utils').extend
 const HError = require('./HError')
 const request = require('./request')
 const utils = require('./utils')
@@ -26,12 +25,12 @@ const doCreateRequestMethod = (methodMap) => {
       BaaS[k] = ((k) => {
         let methodItem = methodMap[k]
         return (objects) => {
-          let newObjects = extend({}, objects)
+          let newObjects = utils.cloneDeep(objects)
           let method = methodItem.method || 'GET'
 
           if (methodItem.defaultParams) {
-            let defaultParamsCopy = extend({}, methodItem.defaultParams)
-            newObjects = extend(defaultParamsCopy, newObjects)
+            let defaultParamsCopy = utils.cloneDeep(methodItem.defaultParams)
+            newObjects = utils.extend(defaultParamsCopy, newObjects)
           }
 
           let url = utils.format(methodItem.url, newObjects)

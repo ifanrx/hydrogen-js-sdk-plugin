@@ -1,6 +1,5 @@
 const BaaS = require('./baas')
 const constants = require('./constants')
-const extend = require('../utils').extend
 const HError = require('./HError')
 const utils = require('./utils')
 
@@ -32,7 +31,7 @@ const setHeader = (header) => {
     })
   }
 
-  return extend(extendHeader, header || {})
+  return utils.extend(extendHeader, header || {})
 }
 
 const request = ({ url, method = 'GET', data = {}, header = {}, dataType = 'json' }) => {
