@@ -149,7 +149,7 @@ const cloneDeep = source => {
     if (source.hasOwnProperty(keys)) {
       if (source[keys] && typeof source[keys] === 'object') {
         target[keys] = isArray(source[keys]) ? [] : {}
-        target[keys] = deepClone(source[keys])
+        target[keys] = cloneDeep(source[keys])
       } else {
         target[keys] = source[keys]
       }
