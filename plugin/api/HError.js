@@ -28,7 +28,7 @@ class HError {
     case 608:
       return 'payment failed'   // error message 会被重写为微信返回的错误信息
     case 609:
-      return 'you need to execute wxExtend'
+      return 'wxExtend function should be executed to allow plugin use wx.login, wx.getUserInfo, wx.requestPayment'
     default:
       return 'unknown error'
     }
