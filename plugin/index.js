@@ -1,3 +1,3 @@
-var BaaS = require('./api/data.js')
+var BaaS = require('./api/index')
 
 module.exports = BaaS

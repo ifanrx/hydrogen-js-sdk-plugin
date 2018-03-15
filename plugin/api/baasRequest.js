@@ -1,9 +1,7 @@
 const auth = require('./auth')
 const BaaS = require('./baas')
 const constants = require('./constants')
-const extend = require('node.extend')
 const HError = require('./HError')
-const Promise = require('./promise')
 const request = require('./request')
 const utils = require('./utils')
 
@@ -22,19 +20,17 @@ const baasRequest = function ({ url, method = 'GET', data = {}, header = {}, dat
  * @param  {Object} methodMap 按照指定格式配置好的方法配置映射表
  */
 const doCreateRequestMethod = (methodMap) => {
-
-
   for (let k in methodMap) {
     if (methodMap.hasOwnProperty(k)) {
       BaaS[k] = ((k) => {
         let methodItem = methodMap[k]
         return (objects) => {
-          let newObjects = extend(true, {}, objects)
+          let newObjects = utils.cloneDeep(objects)
           let method = methodItem.method || 'GET'
 
           if (methodItem.defaultParams) {
-            let defaultParamsCopy = extend({}, methodItem.defaultParams)
-            newObjects = extend(defaultParamsCopy, newObjects)
+            let defaultParamsCopy = utils.cloneDeep(methodItem.defaultParams)
+            newObjects = utils.extend(defaultParamsCopy, newObjects)
           }
 
           let url = utils.format(methodItem.url, newObjects)

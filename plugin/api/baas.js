@@ -6,19 +6,17 @@ const constants = require('./constants')
 const HError = require('./HError')
 const storage = require('./storage')
 const utils = require('./utils')
-const _isString = require('lodash/isString')
 
 const BaaS = global.BaaS || {}
 
 BaaS._config = utils.getConfig()
 
 BaaS.init = (clientID) => {
-  if (!_isString(clientID)) {
+  if (!utils.isString(clientID)) {
     throw new HError(605)
   }
 
   BaaS._config.CLIENT_ID = clientID
-  BaaS._config.API_HOST = `https://${clientID}.xiaoapp.io`
 }
 
 BaaS.getAuthToken = () => {
@@ -39,6 +37,29 @@ BaaS.clearSession = () => {
   storage.set(constants.STORAGE_KEY.UID, '')
   storage.set(constants.STORAGE_KEY.OPENID, '')
   storage.set(constants.STORAGE_KEY.UNIONID, '')
+}
+
+BaaS.wxExtend = (...args) => {
+  if (args.length < 1) {
+    throw new HError(605)
+  }
+
+  if (utils.isObject(args[0])) {
+    BaaS.wxLogin = args[0].wxLogin
+    BaaS.wxGetUserInfo = args[0].wxGetUserInfo
+    BaaS.wxPaymentRequest = args[0].wxPaymentRequest
+  } else {
+    const valiadFunc = ['wxLogin', 'wxGetUserInfo', 'wxPaymentRequest']
+    let len = args.length > valiadFunc.length ? valiadFunc.length : args.length
+
+    for(let i = 0; i < len; i++) {
+      if (utils.isFunction(args[i])) {
+        BaaS[valiadFunc[i]] = args[i]
+      } else {
+        throw new HError(605)
+      }
+    }
+  }
 }
 
 module.exports = BaaS
