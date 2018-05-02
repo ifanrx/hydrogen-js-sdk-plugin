@@ -2,6 +2,6 @@ App({
   onLaunch: function () {
     wx.BaaS = requirePlugin('myPlugin')
     wx.BaaS.wxExtend(wx.login, wx.getUserInfo, wx.requestPayment)
-    wx.BaaS.init('733b59d1b10ff4a37390')
+    wx.BaaS.init('a4d2d62965ddb57fa4d6')
   }
 })

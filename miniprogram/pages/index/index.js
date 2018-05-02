@@ -77,7 +77,7 @@ Page({
   },
 
   getRecord: function() {
-    Product.get('5aa8f35b09a8050ae1bbce03').then(res => {
+    Product.expand('created_by').select(['desc', 'created_by']).get('5a2fa9b008443e59e0e67829').then(res => {
       console.log('res', res.data)
       this.showSuccessToast()
     }, err => {
@@ -121,11 +121,17 @@ Page({
   },
 
   getContent: function() {
-    MyContentGroup.getContent(1521091701839706).then(res => {
-      console.log('res', res)
+    // MyContentGroup.getContent(1521091701839706).then(res => {
+    //   console.log('res', res)
+    //   this.showSuccessToast()
+    // }, err => {
+    //   console.log(err)
+    //   this.showFailToast()
+    // })
+
+    wx.BaaS.getContentGroupList().then(res => {
       this.showSuccessToast()
     }, err => {
-      console.log(err)
       this.showFailToast()
     })
   },
@@ -165,7 +171,7 @@ Page({
       path: '../index/index?id=A',
       width: 250
     }
-    wx.BaaS.getWXACode('wxacode', params).then(res => {
+    wx.BaaS.getWXACode('wxacode', params, true, 'SDK').then(res => {
       this.setData({ imageBase64: res.image })
     }).catch(err => {
       console.log(err)
@@ -202,5 +208,33 @@ Page({
       console.log(err)
       this.showFailToast()
     })
+  },
+
+  invokeFunction: function() {
+    wx.BaaS.invokeFunction('helloWorld', undefined).then(res => {
+      if (res.code === 0) {
+        // success
+        console.log(res.data)
+      } else {
+        // faile
+        console.log(res.error.message)
+      }
+    }, err => {
+      console.log('err', err)
+    })
+  },
+
+  tempTest: function() {
+    // let product = Product.create()
+    // product.set('categoryID', 200).save().then(res => {
+    //   this.showSuccessToast()
+    // }, err => {
+    //   this.showFailToast()
+    //   console.log(err)
+    // })
+
+    // Product.limit(3).offset(1).find().then(res => {
+    //   Product.find()
+    // })
   }
 })
