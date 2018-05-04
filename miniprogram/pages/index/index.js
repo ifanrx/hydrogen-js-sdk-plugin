@@ -121,17 +121,11 @@ Page({
   },
 
   getContent: function() {
-    // MyContentGroup.getContent(1521091701839706).then(res => {
-    //   console.log('res', res)
-    //   this.showSuccessToast()
-    // }, err => {
-    //   console.log(err)
-    //   this.showFailToast()
-    // })
-
-    wx.BaaS.getContentGroupList().then(res => {
+    MyContentGroup.getContent(1521091701839706).then(res => {
+      console.log('res', res)
       this.showSuccessToast()
     }, err => {
+      console.log(err)
       this.showFailToast()
     })
   },
@@ -225,16 +219,12 @@ Page({
   },
 
   tempTest: function() {
-    // let product = Product.create()
-    // product.set('categoryID', 200).save().then(res => {
-    //   this.showSuccessToast()
-    // }, err => {
-    //   this.showFailToast()
-    //   console.log(err)
-    // })
-
-    // Product.limit(3).offset(1).find().then(res => {
-    //   Product.find()
-    // })
+    let product = Product.create()
+    product.set('categoryID', 200).save().then(res => {
+      this.showSuccessToast()
+    }, err => {
+      this.showFailToast()
+      console.log(err)
+    })
   }
 })
