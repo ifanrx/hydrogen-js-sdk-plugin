@@ -18,6 +18,8 @@
   <button bindtap='getWXACode'>getWXACode</button>
   <button bindtap='getRunData'>getRunData</button>
   <button bindtap='reportTicket'>wxReportTicket</button>
+  <button bindtap='invokeFunction'>invokeFunction</button>
+  <button bindtap='tempTest'>temp</button>
   <view style='text-align: center;'>
     <image src='{{imageBase64}}' style='width: 250px; height: 250px' />
   </view>
