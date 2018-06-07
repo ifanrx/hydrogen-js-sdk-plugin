@@ -175,6 +175,7 @@ module.exports = {
   replaceQueryParams,
   wxRequestFail,
   extractErrorMsg,
+  isArray,
   isString,
   isObject,
   isFunction,
