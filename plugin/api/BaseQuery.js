@@ -102,7 +102,6 @@ class BaseQuery {
       conditions.where = JSON.stringify(this._queryObject)
     }
 
-    conditions.where = JSON.stringify(this._queryObject)
     return conditions
   }
 }
