@@ -1,6 +1,7 @@
 const HError = require('./HError')
 const Query = require('./Query')
 const utils = require('./utils')
+const Aggregation = require('./Aggregation')
 
 class BaseQuery {
   constructor() {
@@ -14,11 +15,21 @@ class BaseQuery {
     this._orderBy = null
     this._keys = null
     this._expand = null
+    this._aggregation = null
   }
 
   setQuery(queryObject) {
     if (queryObject instanceof Query) {
       this._queryObject = utils.cloneDeep(queryObject.queryObject)
+    } else {
+      throw new HError(605)
+    }
+    return this
+  }
+
+  setAggregation(aggregation) {
+    if (aggregation instanceof Aggregation) {
+      this._aggregation = aggregation
     } else {
       throw new HError(605)
     }
@@ -83,6 +94,12 @@ class BaseQuery {
 
     if (this._expand) {
       conditions.expand = this._expand
+    }
+
+    if (this._aggregation) {
+      conditions.aggregate = JSON.stringify(this._aggregation.getPipeline())
+    } else {
+      conditions.where = JSON.stringify(this._queryObject)
     }
 
     conditions.where = JSON.stringify(this._queryObject)
