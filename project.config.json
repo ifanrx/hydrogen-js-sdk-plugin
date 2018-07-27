@@ -3,9 +3,41 @@
 	"pluginRoot": "./plugin",
 	"compileType": "plugin",
 	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wxc6b86e382a1e3294",
 	"projectname": "hydrogen-js-sdk-plugin",
-	"condition": {}
+	"libVersion": "2.2.1",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": 0,
+			"list": [
+				{
+					"id": 0,
+					"name": "广告落地页带参数",
+					"pathName": "pages/veryrich/index",
+					"query": "ad_id=testad&kak=3333&bbc=王小明"
+				}
+			]
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": -1,
+			"list": []
+		}
+	}
 }
