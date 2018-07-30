@@ -4,7 +4,7 @@
     "pages/veryrich/index"
   ],
   "plugins": {
-    "myPlugin": {
+    "sdkPlugin": {
       "version": "dev",
       "provider": "wxc6b86e382a1e3294"
     }

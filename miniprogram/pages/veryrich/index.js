@@ -5,7 +5,7 @@ Page({
       ad_config
     } = opt
     wx.redirectTo({
-      url: `plugin://myPlugin/veryrich?ad_config=${ad_config}`,
+      url: `plugin://sdkPlugin/veryrich?ad_config=${ad_config}`,
     })
   },
 })
