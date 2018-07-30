@@ -1,1 +1,6 @@
-<view class="title">知晓云 JS SDK 小程序插件版</view>
+<view class="title">知晓云 JS SDK 小程序插件版
+
+  <navigator url="plugin://myPlugin/veryrich?ad_config={{veryrichAdConfig}}">
+    跳转到 veryrich 页面
+  </navigator>
+</view>

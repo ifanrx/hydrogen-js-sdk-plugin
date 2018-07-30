@@ -1,0 +1,4 @@
+<!--plugin/pages/veryrich/index.wxml-->
+<view>
+<web-view src="{{adURL}}"></web-view>
+</view>
