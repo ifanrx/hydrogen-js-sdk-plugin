@@ -1,12 +1,11 @@
 // pages/veryrich/index.js
 Page({
   onLoad: function(opt) {
-    let qs = Object.keys(opt).reduce((prev , cur, i) => {
-      if(i > 0) prev += '&'
-       return prev + `${cur}=${encodeURIComponent(opt[cur])}`
-    }, '?')
+    let {
+      ad_config
+    } = opt
     wx.redirectTo({
-      url: `plugin://myPlugin/veryrich${qs}`,
+      url: `plugin://myPlugin/veryrich?ad_config=${ad_config}`,
     })
   },
 })
