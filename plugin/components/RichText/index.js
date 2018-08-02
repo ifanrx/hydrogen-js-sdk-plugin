@@ -32,7 +32,7 @@ Component({
       try {
         wxParser.parse({
           bind: 'richText',
-          html: this.properties.html,
+          html: this.data.html,
           target: that,
           enablePreviewImage: false,
           tapLink: (url) => {
