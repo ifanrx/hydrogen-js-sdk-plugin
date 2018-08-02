@@ -1,6 +1,5 @@
 <!--plugin/pages/veryrich/index.wxml-->
-<import src="../../utils/wxParser/index.wxml"/>
-
-<view class="wxParser">
-  <template is="wxParser" data="{{wxParserData:richText.nodes}}"/>
+<view>
+  <web-page v-if="{{ renderType=== 'webPage' }}"></web-page>
+  <rich-text v-if="{{ renderType=== 'richtext' }}" richText="{{richText}}"></rich-text>
 </view>

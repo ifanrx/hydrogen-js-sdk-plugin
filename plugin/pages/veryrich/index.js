@@ -1,13 +1,19 @@
 // plugin/pages/veryrich/index.js
 const API_HOST = 'https://sso.ifanr.com/'
-let wxParser = require('../../utils/wxParser/index')
+const RENDER_TYPE_RICH_TEXT = 'richtext'
+const RENDER_TYPE_WEB_VIEW = 'webPage'
+let wxParser = require('../../utils/wxParser/wxParser/index')
 
 Page({
 
   /**
    * 页面的初始数据
    */
-  data: {},
+  data: {
+    renderType: '',
+    webViewURL: '',
+    richText: ''
+  },
 
   /**
    * 生命周期函数--监听页面加载
@@ -22,26 +28,45 @@ Page({
         ad_config: ad_config
       },
       success: (res) => {
-        let that = this
-        let html = res.data.html
-        try {
-          wxParser.parse({
-            bind: 'richText',
-            html: html,
-            target: that,
-            enablePreviewImage: false,
-            tapLink: (url) => {
-              // do nothing
-            },
-          })
-        } catch (e) {
-          wxParser.parse({
-            bind: 'richText',
-            html: `<div>HTML 解析错误: ${e.message}</div>`,
-            target: that,
-          });
+        let type = res.data.type
+        this.setData({
+          renderType: type
+        })
+
+        if (type === RENDER_TYPE_RICH_TEXT) {
+          this.initRichTextPage(res.data.data)
+        } else if (type === RENDER_TYPE_WEB_VIEW) {
+          this.initWebViewPage(res.data.data)
         }
       }
+    })
+  },
+
+  initRichTextPage(html) {
+    let that = this
+    try {
+      wxParser.parse({
+        bind: 'richText',
+        html: html,
+        target: that,
+        enablePreviewImage: false,
+        tapLink: (url) => {
+          // do nothing
+        },
+      })
+    } catch (e) {
+      wxParser.parse({
+        bind: 'richText',
+        html: `<div>HTML 解析错误: ${e.message}</div>`,
+        target: that,
+      });
+    }
+
+  },
+
+  initWebViewPage(url) {
+    this.setData({
+      webViewURL: url
     })
   }
 })

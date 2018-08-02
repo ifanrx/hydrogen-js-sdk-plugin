@@ -1,0 +1,4 @@
+<!--plugin/components/webPage.wxml-->
+<view>
+<web-view></web-view>
+</view>

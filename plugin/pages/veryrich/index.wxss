@@ -1,3 +1,2 @@
 /* plugin/pages/veryrich/index.wxss */
 
-@import '../../utils/wxParser/index.wxss';
