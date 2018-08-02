@@ -1,5 +1,5 @@
 <!--plugin/pages/veryrich/index.wxml-->
 <view>
-  <web-page v-if="{{ renderType=== 'webPage' }}"></web-page>
-  <rich-text v-if="{{ renderType=== 'richtext' }}" richText="{{richText}}"></rich-text>
+  <web-page v-if="{{ renderType=== 'webPage' }}" url="{{ webViewURL }}"></web-page>
+  <rich-text v-if="{{ renderType=== 'richtext' }}" richText="{{ richText }}"></rich-text>
 </view>
