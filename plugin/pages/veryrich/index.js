@@ -2,7 +2,6 @@
 const API_HOST = 'https://sso.ifanr.com/'
 const RENDER_TYPE_RICH_TEXT = 'richtext'
 const RENDER_TYPE_WEB_VIEW = 'webPage'
-let wxParser = require('../../utils/wxParser/wxParser/index')
 
 Page({
 
@@ -43,25 +42,9 @@ Page({
   },
 
   initRichTextPage(html) {
-    let that = this
-    try {
-      wxParser.parse({
-        bind: 'richText',
-        html: html,
-        target: that,
-        enablePreviewImage: false,
-        tapLink: (url) => {
-          // do nothing
-        },
-      })
-    } catch (e) {
-      wxParser.parse({
-        bind: 'richText',
-        html: `<div>HTML 解析错误: ${e.message}</div>`,
-        target: that,
-      });
-    }
-
+    this.setData({
+      richText: html
+    })
   },
 
   initWebViewPage(url) {

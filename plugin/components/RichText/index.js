@@ -1,21 +1,51 @@
+let wxParser = require('../../utils/wxParser/wxParser/index')
+
 Component({
   /**
    * 组件的属性列表
    */
   properties: {
-    richText: {
-      type: Object,
-      value: {}
+    html: {
+      type: String,
+      value: '',
+      observer(newVal, oldVal, changedPath) {
+        if (newVal) {
+          this.initPage()
+        }
+      }
     }
   },
 
   /**
    * 组件的初始数据
    */
-  data: {},
+  data: {
+    richText: ''
+  },
 
   /**
    * 组件的方法列表
    */
-  methods: {}
+  methods: {
+    initPage() {
+      let that = this
+      try {
+        wxParser.parse({
+          bind: 'richText',
+          html: this.properties.html,
+          target: that,
+          enablePreviewImage: false,
+          tapLink: (url) => {
+            // do nothing
+          },
+        })
+      } catch (e) {
+        wxParser.parse({
+          bind: 'richText',
+          html: `<div>HTML 解析错误: ${e.message}</div>`,
+          target: that,
+        });
+      }
+    }
+  },
 })
