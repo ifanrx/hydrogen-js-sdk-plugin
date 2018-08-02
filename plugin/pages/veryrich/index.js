@@ -1,6 +1,6 @@
 // plugin/pages/veryrich/index.js
 const API_HOST = 'https://sso.ifanr.com/'
-let wxParser = require('../../utils/wxParser/index');
+let wxParser = require('../../utils/wxParser/index')
 
 Page({
 
@@ -32,8 +32,8 @@ Page({
             enablePreviewImage: false,
             tapLink: (url) => {
               // do nothing
-            }
-          });
+            },
+          })
         } catch (e) {
           wxParser.parse({
             bind: 'richText',
