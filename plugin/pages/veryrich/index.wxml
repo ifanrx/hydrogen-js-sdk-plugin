@@ -1,4 +1,6 @@
 <!--plugin/pages/veryrich/index.wxml-->
-<view>
-<web-view src="{{adURL}}"></web-view>
+<import src="../../utils/wxParser/index.wxml"/>
+
+<view class="wxParser">
+  <template is="wxParser" data="{{wxParserData:richText.nodes}}"/>
 </view>
