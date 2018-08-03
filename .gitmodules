@@ -1,0 +1,3 @@
+[submodule "plugin/utils/wxParser"]
+	path = plugin/utils/wxParser
+	url = git@github.com:ifanrx/wxParser.git
