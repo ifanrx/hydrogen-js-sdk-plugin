@@ -28,7 +28,14 @@ Page({
         ad_config: ad_config
       },
       success: (res) => {
+        if (res.statusCode != 200) {
+          return this.setData({
+            errMsg: '接口请求错误: ' + (res.data ? res.data.error_msg : res.statusCode)
+          })
+        }
+
         let type = res.data.type
+
         this.setData({
           renderType: type
         })
@@ -42,6 +49,11 @@ Page({
             errMsg: '请升级插件版本。 UNKNOWN TYPE：' + type
           })
         }
+      },
+      fail: () => {
+        this.setData({
+          errMsg: '请求错误'
+        })
       }
     })
   },
