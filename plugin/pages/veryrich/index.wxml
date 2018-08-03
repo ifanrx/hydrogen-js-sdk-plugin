@@ -2,4 +2,5 @@
 <view>
   <web-page v-if="{{ renderType=== 'webPage' }}" url="{{ webViewURL }}"></web-page>
   <rich-text v-if="{{ renderType=== 'richtext' }}" html="{{ richText }}"></rich-text>
+  <text v-if="{{ errMsg }}">{{ errMsg }}</text>
 </view>

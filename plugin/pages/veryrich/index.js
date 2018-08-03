@@ -11,7 +11,8 @@ Page({
   data: {
     renderType: '',
     webViewURL: '',
-    richText: ''
+    richText: '',
+    errMsg: ''
   },
 
   /**
@@ -36,6 +37,10 @@ Page({
           this.initRichTextPage(res.data.data)
         } else if (type === RENDER_TYPE_WEB_VIEW) {
           this.initWebViewPage(res.data.data)
+        } else {
+          this.setData({
+            errMsg: '请升级插件版本。 UNKNOWN TYPE：' + type
+          })
         }
       }
     })
