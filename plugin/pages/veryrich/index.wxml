@@ -1,6 +1,12 @@
 <!--plugin/pages/veryrich/index.wxml-->
 <view>
-  <web-page v-if="{{ renderType=== 'webPage' }}" url="{{ webViewURL }}"></web-page>
-  <rich-text v-if="{{ renderType=== 'richtext' }}" html="{{ richText }}"></rich-text>
-  <text v-if="{{ errMsg }}">{{ errMsg }}</text>
+  <block wx:if="{{ renderType === 'webPage' }}">
+    <web-page url="{{ webViewURL }}"></web-page>
+  </block>
+  <block wx:elif="{{ renderType === 'richtext' }}">
+    <rich-text html="{{ richText }}"></rich-text>
+  </block>
+  <block wx:if="{{ errMsg }}">
+    <text>{{ errMsg }}</text>
+  </block>
 </view>
