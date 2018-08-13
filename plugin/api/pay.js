@@ -16,12 +16,6 @@ const keysMap = {
 }
 
 const pay = (params) => {
-  if (!storage.get(constants.STORAGE_KEY.USERINFO)) {
-    return new Promise((resolve, reject) => {
-      reject(new HError(603))
-    })
-  }
-
   let paramsObj = {}
 
   for (let key in params) {

@@ -1,14 +1,30 @@
 page {
-  position: relative;
-  width: 100%;
-  height: 100%;
+  padding: 30rpx;
+  box-sizing: border-box;
+}
+
+.special-text {
+  color: red;
+  margin: 50rpx 0;
 }
 
 .title {
-  position: absolute;
-  left: 50%;
-  top: 30%;
-  transform: translateX(-50%);
   font-size: 1.2rem;
-  white-space:nowrap;
+  text-align: center;
+}
+
+.sub-title {
+  margin: 30rpx 0;
+}
+
+.code-block {
+  margin:5rpx 0;
+  padding:10rpx 10rpx;
+  border-radius:8rpx;
+  background:#f8f8f8;
+  font-size:30rpx;
+  line-height:40rpx;
+  overflow-x:auto;
+  white-space:pre;
+  margin-bottom: 50rpx;
 }
