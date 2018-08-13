@@ -1,7 +1,7 @@
 const MyPruductTable = new wx.BaaS.TableObject('product')
 
 Page({
-  onLoad: function() {
+  onLoad: function () {
     console.log(wx.BaaS)
   },
 
@@ -70,5 +70,8 @@ Page({
     wx.BaaS.getWXACode('wxacode', params).then(res => {
       this.setData({ imageBase64: res.image })
     })
+  },
+  data: {
+    veryrichAdConfig: JSON.stringify({ id: '123', show: false, other: '456' })
   }
 })

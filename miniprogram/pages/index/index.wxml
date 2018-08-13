@@ -3,7 +3,7 @@
 <view class="sub-title">数据表操作示例：</view>
 <button size="mini" bindtap="getRecord">获取数据项</button>
 <view class="code-block">
-  let MyPruductTable = 
+  let MyPruductTable =
       new wx.BaaS.TableObject('product')
 
   MyPruductTable.get(productID).then(res => {
