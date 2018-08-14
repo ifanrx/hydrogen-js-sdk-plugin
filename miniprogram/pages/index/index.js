@@ -6,7 +6,7 @@ Page({
   },
 
   getRecord: function() {
-    MyPruductTable.get(123).then(res => {
+    MyPruductTable.get('5aaf28dfa11ab01331eaf2dc').then(res => {
       console.log('product', res.data)
     })
   },
@@ -37,7 +37,7 @@ Page({
   wechatPay: function() {
     wx.BaaS.login(false).then(res => {
       let params = {
-        totalCost: 0.1,
+        totalCost: 0.01,
         merchandiseDescription: '深蓝色秋裤'
       }
       wx.BaaS.pay(params).then(res => {
