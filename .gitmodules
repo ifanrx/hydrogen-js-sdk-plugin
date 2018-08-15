@@ -1,3 +1,9 @@
 [submodule "plugin/utils/wxParser"]
 	path = plugin/utils/wxParser
 	url = git@github.com:ifanrx/wxParser.git
+[submodule "miniprogram/pages-test"]
+	path = miniprogram/pages-test
+	url = git@github.com:ifanrx/sdk-test-case.git
+[submodule "miniprogram/vendor/wxParser"]
+	path = miniprogram/vendor/wxParser
+	url = git@github.com:ifanrx/wxParser.git
