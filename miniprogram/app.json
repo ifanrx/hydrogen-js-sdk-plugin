@@ -25,9 +25,14 @@
     "pages-test/aggregation/index"
   ],
   "plugins": {
+    "wxparserPlugin": {
+      "version": "0.1.0",
+      "provider": "wx9d4d4ffa781ff3ac"
+    },
     "sdkPlugin": {
       "version": "dev",
       "provider": "wxc6b86e382a1e3294"
     }
   }
 }
+
