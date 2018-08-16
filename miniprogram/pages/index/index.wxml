@@ -1,82 +1,72 @@
-<view class="title">知晓云 JS SDK 小程序插件版</view>
-<view class="special-text">注：由于 Appid 的限制，以下操作在微信插件 demo 中无法成功执行，但不影响在真实开发场景下的调用。</view>
-<view class="sub-title">数据表操作示例：</view>
-<button size="mini" bindtap="getRecord">获取数据项</button>
-<view class="code-block">
-  let MyPruductTable =
-      new wx.BaaS.TableObject('product')
-
-  MyPruductTable.get(productID).then(res => {
-      console.log('product', res.data)
-  })
-</view>
-
-<button size="mini" bindtap="queryRecord">查找数据项</button>
-<view class="code-block">
-  let query = new wx.BaaS.Query()
-  query.compare('name', '=', 'apple')
-
-  MyPruductTable.setQuery(query).find().then(res => {
-      console.log('products', res.data)
-  })
-</view>
-
-<view class="sub-title">文件操作示例：</view>
-<button size="mini" bindtap="uploadFile">上传文件到 CDN</button>
-<view class="code-block">
-  wx.chooseImage({
-      success: function(res) {
-          let MyFile = new wx.BaaS.File()
-          let fileParams = {filePath: res.tempFilePaths[0]}
-          let metaData = {categoryName: 'SDK'}
-
-          MyFile.upload(fileParams, metaData).then(res => {
-              console.log('文件上传成功')
-          })
-      }
-  })
-</view>
-
-<view class="sub-title">支付操作示例：</view>
-<button size="mini" bindtap="wechatPay">发起微信支付</button>
-<view class="code-block">
-  wx.BaaS.login(false).then(res => {
-      let params = {
-          totalCost: 0.1,
-          merchandiseDescription: '深蓝色秋裤'
-      }
-      wx.BaaS.pay(params).then(res => {
-          console.log('支付成功，订单号：', res.transaction_no)
-      })
-  })
-</view>
-
-<view class="sub-title">数据解密示例：</view>
-<button size="mini" bindtap="decryptData">解密跑步数据</button>
-<view class="code-block">
-  wx.getWeRunData({
-      success(res) {
-          wx.checkSession({
-              success: function() {
-                  wx.BaaS.wxDecryptData(res.encryptedData, res.iv, 'we-run-data')
-                      .then(decrytedData =>  {
-                          console.log('解密后的数据: ', decrytedData)
-                      })
-              },
-          })
-      }
-  })
-</view>
-
-<view class="sub-title">生成小程序二维码示例：</view>
-<button size="mini" bindtap="getWxcode">生成二维码</button>
-<view class="code-block">
-  const params = {
-    path: '../user/index?id=123456',
-    width: 250
-  }
-
-  wx.BaaS.getWXACode('wxacode', params).then(res => {
-    this.setData({imageBase64: res.image})
-  })
+<view>
+  <view class="page-title">SDK 测试应用</view>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/auth/index">
+    <view class="zan-cell__bd">登入&登出</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/schema-change/index">
+    <view class="zan-cell__bd">schema 增删改测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/schema-query/index">
+    <view class="zan-cell__bd">schema 查找测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/geo/index">
+    <view class="zan-cell__bd">schema geo 类型测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/schema-batch/index">
+    <view class="zan-cell__bd">schema 批量操作测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/schema-legacy/index">
+    <view class="zan-cell__bd">schema 旧接口测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/content/index">
+    <view class="zan-cell__bd">content 查找测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/content-legacy/index">
+    <view class="zan-cell__bd">content 旧接口测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/user/index">
+    <view class="zan-cell__bd">user 测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/file/index">
+    <view class="zan-cell__bd">文件测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/trigger/index">
+    <view class="zan-cell__bd">模板消息测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/decrypt/index">
+    <view class="zan-cell__bd">解密测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/pay/index">
+    <view class="zan-cell__bd">支付测试</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/wxacode/index">
+    <view class="zan-cell__bd">生成二维码</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/invoke-function/index">
+    <view class="zan-cell__bd">触发云函数</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <view class="page-title">wxParser 测试</view>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/wxparser-file/index">
+    <view class="zan-cell__bd">引入文件方式</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
+  <navigator class="zan-cell zan-cell--access" url="/pages-test/wxparser-plugin/index">
+    <view class="zan-cell__bd">使用 wxParser 插件</view>
+    <view class="zan-cell__ft"></view>
+  </navigator>
 </view>
